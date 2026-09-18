@@ -18,15 +18,15 @@ def _get_default_client():
         raise LLMUnavailableError("GEMINI_API_KEY not set")
     genai.configure(api_key=api_key)
     return genai.GenerativeModel(
-        "gemini-3.6-flash",
+        "gemini-flash-lite-latest",
         system_instruction=SYSTEM_PROMPT,
         generation_config={"response_mime_type": "application/json"},
     )
 
-def interpret_notes(notes: list[str], model_client=None) -> list[dict]:
+def interpret_notes(notes: list[str], battery_capacity_kwh: float, model_client=None) -> list[dict]:
     client = model_client if model_client is not None else _get_default_client()
     try:
-        response = client.generate_content(build_user_prompt(notes))
+        response = client.generate_content(build_user_prompt(notes, battery_capacity_kwh))
         raw_text = _strip_fences(response.text)
         parsed = json.loads(raw_text)
     except LLMUnavailableError:

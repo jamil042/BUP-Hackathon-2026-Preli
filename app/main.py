@@ -34,7 +34,7 @@ def _summarize(scenario_id: str, directives: list[DirectiveInterpretation], tota
 @app.post("/optimize-energy", response_model=OptimizeResponse)
 async def optimize_energy(request: OptimizeRequest):
     try:
-        raw_directives = interpret_notes(request.operator_notes)
+        raw_directives = interpret_notes(request.operator_notes, request.battery.capacity_kwh)
     except (LLMUnavailableError, Exception) as exc:
         logger.warning("llm_interpretation_failed: %s", exc)
         directives = fallback_all_no_op(request.operator_notes, reason="llm_unavailable")
