@@ -1,5 +1,5 @@
 from typing import Literal, Optional
-from pydantic import BaseModel, Field, conlist
+from pydantic import BaseModel, Field, conlist, model_serializer
 
 DirectiveType = Literal[
     "solar_reduction",
@@ -34,6 +34,11 @@ class StructuredAdjustment(BaseModel):
     factor: Optional[float] = None
     minimum_energy_kwh: Optional[float] = None
     max_grid_kwh: Optional[float] = None
+
+    @model_serializer(mode="wrap")
+    def _serialize_without_nulls(self, handler):
+        data = handler(self)
+        return {k: v for k, v in data.items() if v is not None}
 
 class DirectiveInterpretation(BaseModel):
     note_index: int

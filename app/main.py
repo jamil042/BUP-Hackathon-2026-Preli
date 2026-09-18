@@ -1,7 +1,10 @@
 import logging
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
+
+load_dotenv()
 
 from app.schemas import OptimizeRequest, OptimizeResponse, DirectiveInterpretation
 from app.llm_interpreter import interpret_notes, LLMUnavailableError
