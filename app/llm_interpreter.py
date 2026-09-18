@@ -37,7 +37,7 @@ def _get_default_client():
     )
 
 def interpret_notes(notes: list[str], battery_capacity_kwh: float, model_client=None,
-                    max_attempts: int = 4, base_delay_s: float = 2.0) -> list[dict]:
+                    max_attempts: int = 4, base_delay_s: float = 1.0) -> list[dict]:
     client = model_client if model_client is not None else _get_default_client()
     prompt = build_user_prompt(notes, battery_capacity_kwh)
 
