@@ -111,9 +111,10 @@ pytest, httpx. See `requirements.txt` for pinned versions.
 
 ## Known limitations
 
-- Single LLM provider (Gemini); no automatic multi-provider failover — if Gemini is unreachable or rate
-  limited, the service falls back to marking all notes `no_op` and still returns a valid (but
-  interpretation-degraded) schedule rather than failing the request.
+- Single LLM provider (Gemini); no automatic multi-provider failover. Requests that hit a Gemini rate limit
+  are retried with exponential backoff (up to 4 attempts, 1s base delay) before the service falls back to
+  marking all notes `no_op` and still returning a valid (but interpretation-degraded) schedule rather than
+  failing the request.
 - The LP optimizer assumes all input scenarios are feasible, per the Problem Statement's guarantee that
   organizer scoring scenarios never require mutually contradictory hard directives.
 
