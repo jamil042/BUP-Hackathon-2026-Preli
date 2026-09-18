@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: gridwise-llm
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
