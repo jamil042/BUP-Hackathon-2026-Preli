@@ -43,7 +43,6 @@ model on the free tier was observed to hit a 5-requests/minute cap during local 
 
 ## Repository & live endpoint
 
-- Repo: `https://github.com/jamil042/BUP-Hackathon-2026-Preli` (private during the event, made public after the deadline)
 - Live judging endpoint: `https://gridwise-llm-kquw.onrender.com`
   - `GET /health` → `{"status":"ok"}`
   - `POST /optimize-energy`
