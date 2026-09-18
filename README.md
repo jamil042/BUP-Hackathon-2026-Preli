@@ -51,7 +51,7 @@ model on the free tier was observed to hit a 5-requests/minute cap during local 
 
 ```bash
 git clone https://github.com/jamil042/BUP-Hackathon-2026-Preli.git
-cd GridWise-LLM
+cd BUP-Hackathon-2026-Preli
 python -m venv .venv
 .venv\Scripts\activate        # Windows; use `source .venv/bin/activate` on macOS/Linux
 pip install -r requirements.txt
