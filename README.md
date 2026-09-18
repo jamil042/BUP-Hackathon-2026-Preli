@@ -41,10 +41,17 @@ Note: `gemini-flash-lite-latest` was chosen over the full `gemini-*-flash` model
 generous-enough per-minute quota keeps repeated hidden-judge requests from being rate-limited; a full flash
 model on the free tier was observed to hit a 5-requests/minute cap during local testing.
 
+## Repository & live endpoint
+
+- Repo: `https://github.com/jamil042/BUP-Hackathon-2026-Preli` (private during the event, made public after the deadline)
+- Live judging endpoint: `https://gridwise-llm-kquw.onrender.com`
+  - `GET /health` → `{"status":"ok"}`
+  - `POST /optimize-energy`
+
 ## Local quickstart (clean environment)
 
 ```bash
-git clone <this-repo-url>
+git clone https://github.com/jamil042/BUP-Hackathon-2026-Preli.git
 cd GridWise-LLM
 python -m venv .venv
 .venv\Scripts\activate        # Windows; use `source .venv/bin/activate` on macOS/Linux
