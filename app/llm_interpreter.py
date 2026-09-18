@@ -18,7 +18,7 @@ def _get_default_client():
         raise LLMUnavailableError("GEMINI_API_KEY not set")
     genai.configure(api_key=api_key)
     return genai.GenerativeModel(
-        "gemini-2.0-flash",
+        "gemini-3.6-flash",
         system_instruction=SYSTEM_PROMPT,
         generation_config={"response_mime_type": "application/json"},
     )
